@@ -11,10 +11,14 @@
     #include <unistd.h>
     #include <stdlib.h>
 
+    int my_strlen(const char *str);
+
     int my_putstr(const char *str);
     int my_putchar(const char character);
-    int my_strlen(const char *str);
+
+    int my_strappend(char *dest, const char character);
     char *my_strcat(char *dest, const char *src);
+
     char *my_strcpy(char *dest, const char *src);
     int my_strcmp(const char *str_1, const char *str_2);
     char *my_strdup(const char *src);

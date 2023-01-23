@@ -14,6 +14,7 @@ SRC	=   my_putstr.c	\
 		my_revstr.c	\
 		my_putchar.c	\
 		my_strerror.c	\
+		my_strappend.c	\
 
 
 OBJ	=	$(SRC:.c=.o)
