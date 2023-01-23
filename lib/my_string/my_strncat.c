@@ -2,16 +2,16 @@
 ** EPITECH PROJECT, 2023
 ** base_repo
 ** File description:
-** my_strcat
+** my_strncat
 */
 
 #include "my_string.h"
 
-char *my_strcat(char *dest, const char *src)
+char *my_strncat(char *dest, const char *src, int n)
 {
     int i = 0;
     int len = my_strlen(dest);
-    while (*(src + i) != '\0') {
+    while (i < n) {
         *(dest + len + i) = *(src + i);
         i += 1;
     }

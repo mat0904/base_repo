@@ -21,6 +21,7 @@ SANITIZE	=	-g3
 LIB	=	-L./lib -lmy_string -lmy_printf -lmy_stdlib
 TEST	=	--coverage -lcriterion
 EXE	=	binary_name
+TEST_EXE	=	unit_test
 
 all:	lib $(EXE)
 
@@ -36,10 +37,10 @@ $(EXE):	$(OBJ)
 clean:
 		@make -C ./lib clean
 		@rm -rf $(OBJ_FOLDER)/$(OBJ)
+		@rm -rf $(TEST_EXE)
 		@rm -rf vgcore*
 		@rm -rf *.gcda
 		@rm -rf *.gcno
-		@rm -rf tests
 
 fclean:	clean
 		@make -C ./lib fclean
@@ -50,7 +51,7 @@ re:	fclean all
 unit_tests:
 			@make -C ./lib
 			@echo -e "\033[32m\033[01mCompilation des fichiers objets\033[0m"
-			$(CC) -o tests $(TEST_FOLDER)/$(TEST_SRC) $(SRC_FOLDER)/$(SRC) $(LIB) $(CFLAGS) $(FLAGS) $(TEST)
+			$(CC) -o $(TEST_EXE) $(TEST_FOLDER)/$(TEST_SRC) $(SRC_FOLDER)/$(SRC) $(LIB) $(CFLAGS) $(FLAGS) $(TEST)
 
 valgrind:	$(OBJ)
 			@make -C ./lib

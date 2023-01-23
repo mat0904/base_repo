@@ -16,8 +16,9 @@
     int my_putstr(const char *str);
     int my_putchar(const char character);
 
-    int my_strappend(char *dest, const char character);
     char *my_strcat(char *dest, const char *src);
+    char *my_strncat(char *dest, const char *src, int n);
+    int my_strappend(char *dest, const char character);
 
     char *my_strcpy(char *dest, const char *src);
     int my_strcmp(const char *str_1, const char *str_2);

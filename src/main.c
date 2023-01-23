@@ -7,13 +7,7 @@
 
 #include "../include/prototype.h"
 
-int test()
-{
-    my_printf("aa");
-    return 0;
-}
-
 int main(const int ac, const char **av)
-{   
+{
     return 0;
 }
