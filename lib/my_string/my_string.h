@@ -21,6 +21,8 @@
     int my_strappend(char *dest, const char character);
 
     char *my_strcpy(char *dest, const char *src);
+    char *my_strncpy(char *dest, const char *src, int n);
+
     int my_strcmp(const char *str_1, const char *str_2);
     char *my_strdup(const char *src);
     char *my_revstr(char *str);
