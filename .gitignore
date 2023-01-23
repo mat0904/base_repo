@@ -1,0 +1,5 @@
+*.o
+*.a
+*.log
+vgcore.*
+binary_name
