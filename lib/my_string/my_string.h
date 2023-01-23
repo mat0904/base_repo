@@ -8,10 +8,11 @@
 #ifndef MY_STRING_H_
     #define MY_STRING_H_
 
-    #include "../../include/my_lib.h"
+    #include <unistd.h>
+    #include <stdlib.h>
 
-    int my_putchar(const char character);
     int my_putstr(const char *str);
+    int my_putchar(const char character);
     int my_strlen(const char *str);
     char *my_strcat(char *dest, const char *src);
     char *my_strcpy(char *dest, const char *src);

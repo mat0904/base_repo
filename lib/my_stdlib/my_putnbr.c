@@ -5,7 +5,7 @@
 ** my_putnbr
 */
 
-#include "my_stdlib.h"
+#include "prototype.h"
 
 int my_putnbr(int number)
 {

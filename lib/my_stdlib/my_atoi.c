@@ -5,8 +5,7 @@
 ** my_atoi
 */
 
-#include "my_stdlib.h"
-#include "my_atox_globalf.h"
+#include "prototype.h"
 
 static int my_atoi_extract_nb(const char *src)
 {

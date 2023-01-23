@@ -5,7 +5,7 @@
 ** my_ato*_globalf
 */
 
-#include "../../include/my_lib.h"
+#include "prototype.h"
 
 static int is_a_mathematical_char(const char character)
 {
