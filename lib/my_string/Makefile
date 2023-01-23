@@ -18,13 +18,18 @@ SRC	=   my_putstr.c	\
 
 
 OBJ	=	$(SRC:.c=.o)
-FLAGS	=	-Well -Werror -pedantic -ansi
+FLAGS	=	-Wall -Werror
 LIBNAME	=	../libmy_string.a
 
 all:	$(LIBNAME)
 
+%.o:	%.c
+		@echo -e "\033[31m\033[01mCréation d'un fichier librairie objet: $@ -> $^ \033[0m"
+		$(CC) -o $@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
+
 $(LIBNAME):	$(OBJ)
-			ar rc $(LIBNAME) $(OBJ)
+			@echo -e "\033[31m\033[01mCréation de la librairie\033[0m"
+			ar rc $(LIBNAME) $<
 
 clean:
 		rm -rf $(OBJ)

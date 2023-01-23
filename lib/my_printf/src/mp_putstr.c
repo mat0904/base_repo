@@ -18,7 +18,6 @@ static int mp_strlen(char *str)
 
 int mp_putstr(char *str)
 {
-    int i = 0;
     int len = mp_strlen(str);
     write(1, str, len);
     return 0;
