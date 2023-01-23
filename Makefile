@@ -5,7 +5,10 @@
 ## Makefile
 ##
 
-SRC	=	src/main.c
+SRC	=	main.c
+
+SRC_FOLDER	=	src
+OBJ_FOLDER	=	obj
 
 OBJ	=	$(SRC:.c=.o)
 CC	=	gcc
@@ -15,24 +18,24 @@ LIB	=	-L./lib -lmy_string -lmy_printf -lmy_stdlib
 TEST	=	--coverage -lcriterion
 EXE	=	binary_name
 
-all:	$(EXE)
+all:	lib $(EXE)
 
-%.o:	%.c
-		@echo "COMPILATION D4UN FICHIER"
-		$(CC) -o $@ $^ $(CFLAGS) $(FLAGS) $(LIB)
+%.o:	$(SRC_FOLDER)/%.c
+		@echo -e "\033[31m\033[01mCréation d'un fichier objet: $(OBJ_FOLDER)/$@ -> $^ \033[0m"
+		@$(CC) -o $(OBJ_FOLDER)/$@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
 
 $(EXE):	$(OBJ)
-		make -C ./lib
-		$(CC) -o $@ $< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
+		@make -C ./lib
+		@$(CC) -o $@ $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
 
 clean:
-		make -C ./lib clean
-		rm -rf $(OBJ)
-		rm -rf *.gcna
-		rm -rf *.gcdo
+		@make -C ./lib clean
+		@rm -rf $(OBJ_FOLDER)/$(OBJ)
+		@rm -rf *.gcna
+		@rm -rf *.gcdo
 
 fclean:	clean
-		make -C ./lib fclean
-		rm -rf $(EXE)
+		@make -C ./lib fclean
+		@rm -rf $(EXE)
 
 re:	fclean all
