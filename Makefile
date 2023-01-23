@@ -14,6 +14,7 @@ OBJ	=	$(SRC:.c=.o)
 CC	=	gcc
 CFLAGS	=	-Wall -Werror
 FLAGS	=
+SANITIZE	=	-g3
 LIB	=	-L./lib -lmy_string -lmy_printf -lmy_stdlib
 TEST	=	--coverage -lcriterion
 EXE	=	binary_name
@@ -26,7 +27,7 @@ all:	lib $(EXE)
 
 $(EXE):	$(OBJ)
 		@make -C ./lib
-		@$(CC) -o $@ $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
+		@$(CC) -o $(EXE) $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
 
 clean:
 		@make -C ./lib clean
@@ -39,3 +40,8 @@ fclean:	clean
 		@rm -rf $(EXE)
 
 re:	fclean all
+
+valgrind:	$(OBJ)
+			@make -C ./lib
+			@$(CC) -o $(EXE) $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB) $(SANITIZE)
+			valgrind ./$(EXE)
