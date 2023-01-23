@@ -27,11 +27,13 @@ all:	lib $(EXE)
 
 $(EXE):	$(OBJ)
 		@make -C ./lib
-		@$(CC) -o $(EXE) $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
+		@echo -e "\033[31m\033[01mCompilation des fichiers objets\033[0m"
+		$(CC) -o $(EXE) $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
 
 clean:
 		@make -C ./lib clean
 		@rm -rf $(OBJ_FOLDER)/$(OBJ)
+		@rm -rf vgcore*
 		@rm -rf *.gcna
 		@rm -rf *.gcdo
 
