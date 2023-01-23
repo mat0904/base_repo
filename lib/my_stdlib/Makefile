@@ -17,11 +17,11 @@ LIBNAME	=	../libmy_stdlib.a
 all:	$(LIBNAME)
 
 %.o:	%.c
-		@echo -e "\033[31m\033[01mCréation d'un fichier librairie objet: $@ -> $^ \033[0m"
+		@echo -e "\033[32m\033[01mCréation d'un fichier librairie objet: $@ -> $^ \033[0m"
 		$(CC) -o $@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
 
 $(LIBNAME):	$(OBJ)
-			@echo -e "\033[31m\033[01mCréation de la librairie\033[0m"
+			@echo -e "\033[32m\033[01mCréation de la librairie\033[0m"
 			ar rc $(LIBNAME) $<
 
 clean:
