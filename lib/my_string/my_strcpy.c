@@ -5,7 +5,7 @@
 ** my_strcpy
 */
 
-#include "prototype.h"
+#include "my_string.h"
 
 char *my_strcpy(char *dest, const char *src)
 {

@@ -5,7 +5,7 @@
 ** my_revstr
 */
 
-#include "prototype.h"
+#include "my_string.h"
 
 char *my_revstr(char *str)
 {

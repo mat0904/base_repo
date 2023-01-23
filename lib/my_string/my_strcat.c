@@ -5,7 +5,7 @@
 ** my_strcat
 */
 
-#include "prototype.h"
+#include "my_string.h"
 
 char *my_strcat(char *dest, const char *src)
 {

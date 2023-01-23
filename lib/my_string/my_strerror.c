@@ -5,7 +5,7 @@
 ** my_strerror
 */
 
-#include "prototype.h"
+#include "my_string.h"
 
 int my_strerror(int errnum)
 {

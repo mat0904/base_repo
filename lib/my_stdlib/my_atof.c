@@ -5,7 +5,7 @@
 ** my_atof
 */
 
-#include "prototype.h"
+#include "my_stdlib.h"
 #include "my_atox_globalf.h"
 
 static int my_atof_extract_decimal(const char *src, const char **decimal)

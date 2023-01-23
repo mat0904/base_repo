@@ -5,7 +5,7 @@
 ** my_putchar
 */
 
-#include "prototype.h"
+#include "my_string.h"
 
 int my_putchar(const char character)
 {

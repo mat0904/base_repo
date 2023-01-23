@@ -5,7 +5,7 @@
 ** my_strcmp
 */
 
-#include "prototype.h"
+#include "my_string.h"
 
 int my_strcmp(const char *str_1, const char *str_2)
 {
