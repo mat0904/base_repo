@@ -12,7 +12,9 @@
     #include <unistd.h>
     #include <stdlib.h>
     #include "my_stdlib.h"
-    #include "my_atox_globalf.h"
+
+    int is_negative(const char *str, const char **new_ptr);
+    int check_sanity_number(const char *str);
 
     int nb_size(int number);
     int my_putnbr(int number);
