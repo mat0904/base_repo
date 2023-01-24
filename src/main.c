@@ -9,5 +9,6 @@
 
 int main(const int ac, const char **av)
 {
+    my_printf("%d\n", file_size(av[1]));
     return 0;
 }
