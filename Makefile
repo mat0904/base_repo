@@ -5,39 +5,34 @@
 ## Makefile
 ##
 
-SRC	=	main.c	\
+SRC	=	src/main.c	\
+		src/test/djqds.c	\
 
-TEST_SRC	=	test.c	\
-
-SRC_FOLDER	=	src
 OBJ_FOLDER	=	obj
-TEST_FOLDER	=	test
-
 OBJ	=	$(SRC:.c=.o)
+OBJ_FILES	=	$(addprefix $(OBJ_FOLDER)/, $(notdir $(OBJ)))
+
 CC	=	gcc
 CFLAGS	=	-Wall -Werror
 FLAGS	=
-SANITIZE	=	-g3
 LIB	=	-L./lib -lmy_string -lmy_printf -lmy_stdlib
-TEST	=	--coverage -lcriterion
+SANITIZE	=	-g3
 EXE	=	binary_name
-TEST_EXE	=	unit_test
 
-all:	lib $(EXE)
+all:	$(EXE)
 
-%.o:	$(SRC_FOLDER)/%.c
-		@echo -e "\033[32m\033[01mCréation d'un fichier objet: $(OBJ_FOLDER)/$@ -> $^ \033[0m"
-		@$(CC) -o $(OBJ_FOLDER)/$@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
+%.o:	%.c
+		@echo -e "\033[32m\033[01mCréation d'un fichier objet: $(OBJ_FOLDER)/$($@) -> $^ \033[0m"
+		@$(CC) -o $(OBJ_FOLDER)/$(notdir $@) -c $^ $(CFLAGS) $(FLAGS) $(LIB)
 
 $(EXE):	$(OBJ)
 		@make -C ./lib
 		@echo -e "\033[32m\033[01mCompilation des fichiers objets\033[0m"
-		$(CC) -o $(EXE) $(OBJ_FOLDER)/$< $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
+		$(CC) -o $(EXE) $(OBJ_FILES) $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
 
 clean:
 		@make -C ./lib clean
-		@rm -rf $(OBJ_FOLDER)/$(OBJ)
-		@rm -rf $(TEST_EXE)
+		@rm -rf $(OBJ_FILES)
 		@rm -rf vgcore*
 		@rm -rf *.gcda
 		@rm -rf *.gcno
@@ -47,13 +42,3 @@ fclean:	clean
 		@rm -rf $(EXE)
 
 re:	fclean all
-
-unit_tests:
-			@make -C ./lib
-			@echo -e "\033[32m\033[01mCompilation des fichiers objets\033[0m"
-			$(CC) -o $(TEST_EXE) $(TEST_FOLDER)/$(TEST_SRC) $(SRC_FOLDER)/$(SRC) $(LIB) $(CFLAGS) $(FLAGS) $(TEST)
-
-valgrind:	$(OBJ)
-			@make -C ./lib
-			@$(CC) -o $(EXE) $(OBJ_FOLDER)/$< $(CFLAGS) $(FLAGS) $(LIB) $(SANITIZE)
-			valgrind ./$(EXE)
