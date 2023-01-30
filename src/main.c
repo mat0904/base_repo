@@ -9,6 +9,6 @@
 
 int main(const int ac, const char **av)
 {
-    my_printf("%d\n", file_size(av[1]));
+    my_printf("Hello world!\n");
     return 0;
 }

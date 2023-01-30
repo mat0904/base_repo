@@ -7,7 +7,7 @@
 
 #include "../include/prototype.h"
 
-int mp_detect_specifier(const char *format, va_list list, int specifier)
+static int mp_detect_specifier(const char *format, va_list list, int specifier)
 {
     switch (specifier) {
         case 99:
@@ -25,7 +25,7 @@ int mp_detect_specifier(const char *format, va_list list, int specifier)
     }
 }
 
-int mp_format_parser(const char *format, va_list list)
+static int mp_format_parser(const char *format, va_list list)
 {
     int i = 0;
     while (format[i] != '\0') {
@@ -43,7 +43,7 @@ int mp_format_parser(const char *format, va_list list)
 int my_printf(const char *format, ...)
 {
     va_list list;
-    va_start (list, format);
+    va_start(list, format);
     mp_format_parser(format, list);
     va_end(list);
     return 0;
