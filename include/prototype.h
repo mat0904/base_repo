@@ -11,6 +11,4 @@
     #include "my_lib.h"
     #include "include.h"
 
-    int test();
-
 #endif //BASE_REPO_PROTOTYPE_H

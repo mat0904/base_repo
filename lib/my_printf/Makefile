@@ -32,6 +32,3 @@ fclean:	clean
 		rm -rf $(LIBNAME)
 
 re:	fclean all
-
-exe:	all
-		gcc -o output ./src/main.c -L. -lmy_printf

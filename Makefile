@@ -6,32 +6,30 @@
 ##
 
 SRC	=	src/main.c	\
-		src/test/djqds.c	\
 
 OBJ_FOLDER	=	obj
 OBJ	=	$(SRC:.c=.o)
 OBJ_FILES	=	$(addprefix $(OBJ_FOLDER)/, $(notdir $(OBJ)))
 
 CC	=	gcc
-CFLAGS	=	-Wall -Werror
+CFLAGS	=
 FLAGS	=
 LIB	=	-L./lib -lmy_string -lmy_printf -lmy_stdlib
 SANITIZE	=	-g3
-EXE	=	binary_name
+EXE	=	binary
 
 all:	$(EXE)
 
 %.o:	%.c
-		@echo -e "\033[32m\033[01mCréation d'un fichier objet: $(OBJ_FOLDER)/$($@) -> $^ \033[0m"
 		@$(CC) -o $(OBJ_FOLDER)/$(notdir $@) -c $^ $(CFLAGS) $(FLAGS) $(LIB)
 
 $(EXE):	$(OBJ)
 		@make -C ./lib
-		@echo -e "\033[32m\033[01mCompilation des fichiers objets\033[0m"
 		$(CC) -o $(EXE) $(OBJ_FILES) $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
 
 clean:
 		@make -C ./lib clean
+		@make -C ./tests clean
 		@rm -rf $(OBJ_FILES)
 		@rm -rf vgcore*
 		@rm -rf *.gcda
@@ -39,6 +37,17 @@ clean:
 
 fclean:	clean
 		@make -C ./lib fclean
+		@make -C ./tests fclean
 		@rm -rf $(EXE)
 
+valgrind:	$(OBJ)
+			@make -C ./lib
+			$(CC) -o $(EXE) $(OBJ_FILES) $(CFLAGS) $(FLAGS) $(LIB) $(SANITIZE)
+
 re:	fclean all
+
+unit_tests:
+			@make -C ./tests
+
+tests_run:	unit_tests
+			./tests/mysh_test

@@ -11,6 +11,5 @@
     #include "../lib/my_string/my_string.h"
     #include "../lib/my_printf/my_printf.h"
     #include "../lib/my_stdlib/my_stdlib.h"
-    #include "../lib/other/other.h"
 
 #endif //BASE_REPO_MY_LIB_H_H
