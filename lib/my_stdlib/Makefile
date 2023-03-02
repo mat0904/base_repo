@@ -17,10 +17,10 @@ LIBNAME	=	../libmy_stdlib.a
 all:	$(LIBNAME)
 
 %.o:	%.c
-		$(CC) -o $@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
+		$(CC) -o $@ -c $^ $(FLAGS)
 
 $(LIBNAME):	$(OBJ)
-			ar rc $(LIBNAME) $<
+			ar rc $(LIBNAME) $(OBJ)
 
 clean:
 		rm -rf $(OBJ)

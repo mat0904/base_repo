@@ -18,7 +18,7 @@ LIBNAME	=	../libmy_printf.a
 all:	$(LIBNAME)
 
 %.o:	%.c
-		$(CC) -o $@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
+		$(CC) -o $@ -c $^ $(FLAGS)
 
 $(LIBNAME):	$(OBJ)
 			ar rc $(LIBNAME) $(OBJ)

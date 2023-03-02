@@ -18,6 +18,7 @@ SRC	=   my_putstr.c	\
 		my_strncmp.c	\
 		my_strerror.c	\
 		my_strappend.c	\
+		my_stricat.c \
 
 
 OBJ	=	$(SRC:.c=.o)
@@ -27,10 +28,10 @@ LIBNAME	=	../libmy_string.a
 all:	$(LIBNAME)
 
 %.o:	%.c
-		$(CC) -o $@ -c $^ $(CFLAGS) $(FLAGS) $(LIB)
+		$(CC) -o $@ -c $^ $(FLAGS)
 
 $(LIBNAME):	$(OBJ)
-			ar rc $(LIBNAME) $<
+			ar rc $(LIBNAME) $(OBJ)
 
 clean:
 		rm -rf $(OBJ)

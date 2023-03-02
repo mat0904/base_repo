@@ -19,7 +19,7 @@
     char *my_strcat(char *dest, const char *src);
     char *my_strncat(char *dest, const char *src, int n);
     int my_strappend(char *dest, const char character);
-
+    char *my_stricat(int len, char *dest, ...);
     char *my_strcpy(char *dest, const char *src);
     char *my_strncpy(char *dest, const char *src, int n);
 
