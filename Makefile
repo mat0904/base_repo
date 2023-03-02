@@ -25,7 +25,7 @@ all:	$(EXE)
 
 $(EXE):	$(OBJ)
 		@make -C ./lib
-		$(CC) -o $(EXE) $(OBJ_FILES) $(LIB) $(CFLAGS) $(FLAGS) $(LIB)
+		$(CC) -o $(EXE) $(OBJ_FILES) $(CFLAGS) $(FLAGS) $(LIB)
 
 clean:
 		@make -C ./lib clean
