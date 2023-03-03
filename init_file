@@ -1,3 +1,10 @@
-!#/bin/bash
+repo=$(git remote -v | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//')
+filename=$(basename $1)
+year=$(date +'%Y')
 
-
+echo "/*" > $1
+echo "** EPITECH PROJECT, $year" >> $1
+echo "** $repo" >> $1
+echo "** File description:" >> $1
+echo "** $filename" >> $1
+echo "*/" >> $1
