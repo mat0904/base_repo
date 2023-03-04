@@ -1,0 +1,8 @@
+*.o
+*.a
+*.log
+vgcore.*
+binary_name
+.idea
+*.gcda
+*.gcno
