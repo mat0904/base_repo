@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC	=
+SRC	=	is_working.c
 
 OBJ_FOLDER	=	../obj
 OBJ	=	$(SRC:.c=.o)
